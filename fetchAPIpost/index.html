@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>fetchAPIpost</title>
+  </head>
+  <body>
+    <button type="button" id="fetchpost" name="button">fetchでpost</button>
+    <div class="" id="output"></div>
+
+    <script>
+      document.getElementById('fetchpost').addEventListener('click', curlpost);
+
+      function curlpost(){
+        fetch('index.php', {
+          method: 'POST',
+          body: [
+            {
+              "id": 1,
+              "name":"Rick",
+              "email":"rick@gmail.com"
+            },
+            {
+              "id": 2,
+              "name":"Glenn",
+              "email":"glenn@gmail.com"
+            },
+            {
+              "id": 3,
+              "name":"Negan",
+              "email":"negan@gmail.com"
+            },
+
+          ]
+        })
+        .then((res) => res.json)
+        .then((data) => console.log(data))
+        .catch((err) => console.error(err));
+      }
+
+    </script>
+  </body>
+</html>
